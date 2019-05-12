@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add new information</title>
+</head>
+<style>
+    table{
+        margin: auto;
+        font-size: 25px;
+    }
+    fieldset{
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        margin: auto;
+    }
+.butn{
+    font-size: 20px;
+    padding: 15px;
+    width: 30vw;
+    border-radius: 10%;
+    margin-top: 5%;
+    align-self: center;
+}
+input{
+    height: 30px;
+    width: 100%;
+}
+</style>
+<body>
+    <fieldset>
+        <table>
+            <legend>Add New information</legend>
+            <tr>
+                <td><label>Name : </label></td>
+                <td><input type="text" id="addName" required/></td>
+            </tr>
+            <tr>
+                <td><label>Age : </label></td>
+                <td><input type="text" id="addAge"required/></td>
+            </tr>
+            <tr>
+                <td><label>Salary : </label></td>
+                <td><input type="text" id="addSalary"required/></td>
+            </tr>
+            <tr>
+                <td><label>Job : </label></td>
+                <td><input type="text" id="addJob" required/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="butn" type="button" onclick="submit()">Submit</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="butn" onclick="gotoList();" type="submit">View List</button></td>
+            </tr>
+        </table>
+    </fieldset>
+    <script>
+    var users = [];
+        function User(addName,addAge,addSalary,addJob){
+            this.name = addName;
+            this.age = addAge;
+            this.salary = addSalary;
+            this.job = addJob;
+            this.id = Date.now();
+        }
+        
+        function submit(){
+        var addName = document.getElementById('addName').value;
+        var addAge = document.getElementById('addAge').value;
+        var addSalary = document.getElementById('addSalary').value;
+        var addJob = document.getElementById('addJob').value;
+        users.push(new User(addName,addAge,addSalary,addJob));
+        localStorage.setItem('obj',JSON.stringify(users));
+        }
+        function gotoList(){
+            window.location.href = "./list.html"
+        }</script>
+</body>
+</html>
