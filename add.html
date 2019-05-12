@@ -60,6 +60,10 @@ input{
     </fieldset>
     <script>
     var users = [];
+            var listName = JSON.parse( localStorage.getItem('obj') ) || {};
+            for(var a = 0; a<listName.length;a++){
+                users.push(listName[a]);
+            }
         function User(addName,addAge,addSalary,addJob){
             this.name = addName;
             this.age = addAge;
@@ -75,6 +79,10 @@ input{
         var addJob = document.getElementById('addJob').value;
         users.push(new User(addName,addAge,addSalary,addJob));
         localStorage.setItem('obj',JSON.stringify(users));
+            document.getElementById('addName').value = "";
+            document.getElementById('addAge').value = "";
+            document.getElementById('addSalary').value = "";
+            document.getElementById('addJob').value = "";
         }
         function gotoList(){
             window.location.href = "./list.html"
