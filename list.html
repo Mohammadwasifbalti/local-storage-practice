@@ -26,6 +26,9 @@ td,th{
 th,td{
     border: 1px solid black;
 }
+#viewdetail{
+        margin-left: 5px;
+    }
 </style>
 <body>
     <table id="table">
@@ -45,7 +48,7 @@ th,td{
     <script >
     var listName = JSON.parse( localStorage.getItem('obj') ) || {};
 for(var i = 0; i<listName.length; i++){
-document.getElementById("table").innerHTML  += "<tr><td class='sno'>"+i+"</td><td>"+listName[i].name+"</td><td>"+listName[i].age+"</td><td>"+listName[i].salary+"</td><td>"+listName[i].job+`</td><td><button class='butn' onclick ='viewDetails(${listName[i].id})'>View Details</button></td>`;
+document.getElementById("table").innerHTML  += "<tr><td class='sno'>"+i+"</td><td>"+listName[i].name+"</td><td>"+listName[i].age+"</td><td>"+listName[i].salary+"</td><td>"+listName[i].job+`</td><td><button id='viewdetail' class='butn' onclick ='viewDetails(${listName[i].id})'>View Details</button></td>`;
 }
 function viewDetails(id){
     window.location.href = "./view.html#"+id;
