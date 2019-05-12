@@ -13,6 +13,7 @@ table{
     width: 100%;
 }
 td,th{
+    box-sizing: border-box;
     padding: 10px;
 }
 .butn{
@@ -21,14 +22,14 @@ td,th{
     width: 30vw;
     border-radius: 10%;
     margin-top: 5%;
-    margin-left: 35%;
+    margin-left: 4%;
 }
 th,td{
     border: 1px solid black;
 }
 #viewdetail{
-        margin-left: 5px;
-    }
+    margin-left: 5px;
+}
 </style>
 <body>
     <table id="table">
@@ -44,17 +45,24 @@ th,td{
             <th>Button</th>
         </tr>
     </table>
+    <span>
+    <button onclick="clearhistory()" class="butn"> Clear All </button>
     <button onclick="back()" class="butn"> Back </button>
+</span>
     <script >
     var listName = JSON.parse( localStorage.getItem('obj') ) || {};
 for(var i = 0; i<listName.length; i++){
-document.getElementById("table").innerHTML  += "<tr><td class='sno'>"+i+"</td><td>"+listName[i].name+"</td><td>"+listName[i].age+"</td><td>"+listName[i].salary+"</td><td>"+listName[i].job+`</td><td><button id='viewdetail' class='butn' onclick ='viewDetails(${listName[i].id})'>View Details</button></td>`;
+document.getElementById("table").innerHTML  += "<tr><td class='sno'>"+i+"</td><td>"+listName[i].name+"</td><td>"+listName[i].age+"</td><td>"+listName[i].salary+"</td><td>"+listName[i].job+`</td><td><button class='butn' id='viewdetail' onclick ='viewDetails(${listName[i].id})'>View Details</button></td>`;
 }
 function viewDetails(id){
     window.location.href = "./view.html#"+id;
 }
 function back(){
     window.location.href = "./add.html"
+}
+function clearhistory(){
+    localStorage.clear();
+    document.location.reload();
 }
     </script>
 </body>
