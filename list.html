@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List</title>
+</head>
+<style>
+table{
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+}
+td,th{
+    padding: 10px;
+}
+.butn{
+    font-size: 20px;
+    padding: 5px;
+    width: 30vw;
+    border-radius: 10%;
+    margin-top: 5%;
+    margin-left: 35%;
+}
+th,td{
+    border: 1px solid black;
+}
+</style>
+<body>
+    <table id="table">
+        <tr>
+            <th colspan="6" style="font-size: 30px;">List</th>
+        </tr>
+        <tr>
+            <th>S.NO</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Salary</th>
+            <th>Job</th>
+            <th>Button</th>
+        </tr>
+    </table>
+    <button onclick="back()" class="butn"> Back </button>
+    <script >
+    var listName = JSON.parse( localStorage.getItem('obj') ) || {};
+for(var i = 0; i<listName.length; i++){
+document.getElementById("table").innerHTML  += "<tr><td class='sno'>"+i+"</td><td>"+listName[i].name+"</td><td>"+listName[i].age+"</td><td>"+listName[i].salary+"</td><td>"+listName[i].job+`</td><td><button class='butn' onclick ='viewDetails(${listName[i].id})'>View Details</button></td>`;
+}
+function viewDetails(id){
+    window.location.href = "./view.html#"+id;
+}
+function back(){
+    window.location.href = "./add.html"
+}
+    </script>
+</body>
+</html>
