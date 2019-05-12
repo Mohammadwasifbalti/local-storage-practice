@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+*{
+    box-sizing: border-box;
+    font-size: 1.05em;
+}
+table{
+    width: 100%;
+}
+fieldset legend{
+    text-align: center;
+}
+fieldset{
+    padding: 30px;
+}
+.right{
+    text-align: right;
+    width: 100px;
+}
+td{
+    padding: 10px;
+
+}
+button{
+    padding: 5px;
+    width: 30vw;
+    border-radius: 10%;
+    margin-top: 5%;
+    margin-left: 35%;
+}
+</style>
+<body>
+    <fieldset>
+        <legend>View Information</legend>
+        <table>
+        <tr>
+        <td class="right"><label > Name : </label></td>
+        <td><label id="name"></label></td>
+        </tr>
+        <tr>
+                <td class="right"><label > Age : </label></td>
+                <td><label id="age"></label></td>
+        </tr>
+        <tr>
+                <td class="right"><label > Salary : </label></td>
+                <td><label id="salary"></label></td>
+        </tr>
+        <tr>
+                <td class="right"><label > job : </label></td>
+                <td><label id="job"></label></td>
+        </tr>
+    </table>
+    <button onclick="back()">Back</button>
+    </fieldset>
+    <script>
+    var listName = JSON.parse( localStorage.getItem('obj') ) || {};
+var id = window.location.hash;
+id = id.replace("#","");
+var j;
+for(i = 0; i<listName.length;i++){
+    if(listName[i].id==id){
+        j=i;
+        break;
+    }
+}
+document.getElementById('name').innerText = listName[j].name;
+document.getElementById('age').innerText = listName[j].age;
+document.getElementById('salary').innerText = listName[j].salary;
+document.getElementById('job').innerText = listName[j].job;
+function back(){
+    window.location.href = "./list.html"
+}
+    </script>
+</body>
+</html>
