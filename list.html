@@ -24,14 +24,16 @@ td,th{
     width: 30vw;
     border-radius: 10%;
     margin-top: 5%;
-    margin-left: 4%;
+    margin-left: 1%;
 }
 th,td{
     border: 1px solid black;
 }
 #viewdetail{
     margin-top: 0px;
-    align-self: center;
+}
+#button{
+    margin-left: 15%;
 }
 </style>
 <body>
@@ -48,7 +50,7 @@ th,td{
             <th>Button</th>
         </tr>
     </table>
-    <span>
+    <span id="button">
     <button onclick="clearhistory()" class="butn"> Clear All </button>
     <button onclick="back()" class="butn"> Back </button>
 </span>
