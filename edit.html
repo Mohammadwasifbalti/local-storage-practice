@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+*{
+    box-sizing: border-box;
+    font-size: 1.07em;
+}
+table{
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+fieldset legend{
+    text-align: center;
+}
+fieldset{
+    padding: 40px;
+}
+.right{
+    text-align: right;
+    width: 20%;
+}
+td{
+    padding: 10px;
+
+}
+button{
+    padding: 5px;
+    width: 30vw;
+    border-radius: 10%;
+    margin-top: 5%;
+    margin-left: 35%;
+}
+</style>
+<body>
+    <fieldset>
+        <legend>View Information</legend>
+        <table>
+        <tr>
+        <td class="right"><label > Name : </label></td>
+        <td><input id="name"/></td>
+        </tr>
+        <tr>
+                <td class="right"><label > Age : </label></td>
+                <td><input id="age"/></td>
+        </tr>
+        <tr>
+                <td class="right"><label > Salary : </label></td>
+                <td><input id="salary"/></td>
+        </tr>
+        <tr>
+                <td class="right"><label > job : </label></td>
+                <td><input id="job"/></td>
+        </tr>
+    </table>
+    <button onclick="update()">Update</button>
+    <button onclick="back()">Cancel</button>
+    </fieldset>
+    <script>
+    var listName = JSON.parse( localStorage.getItem('obj') ) || {};
+var id = window.location.hash;
+id = id.replace("#","");
+var j;
+for(i = 0; i<listName.length;i++){
+    if(listName[i].id==id){
+        j=i;
+        break;
+    }
+}
+document.getElementById('name').value = listName[j].name;
+document.getElementById('age').value = listName[j].age;
+document.getElementById('salary').value = listName[j].salary;
+document.getElementById('job').value = listName[j].job;
+function update(){
+    listName[j].name = document.getElementById('name').value;
+    listName[j].age = document.getElementById('age').value;
+    listName[j].salary = document.getElementById('salary').value;
+    listName[j].job = document.getElementById('job').value;
+    localStorage.setItem('obj',JSON.stringify(listName));
+    window.location.href = "./view.html#"+id;
+}
+function back(){
+    window.location.href = "./view.html#"+id;
+}
+    </script>
+</body>
+</html>
